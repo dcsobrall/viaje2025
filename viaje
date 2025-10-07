@@ -24,17 +24,24 @@
         }
         .tab-button {
             transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem 1rem; /* Padding ajustado para móvil */
             font-weight: 500;
+            font-size: 0.875rem; /* Tamaño de fuente ajustado */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .tab-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
         }
         .tab-button.active {
             background-color: #3b82f6;
             color: #ffffff;
             border-color: #3b82f6;
         }
-        /* Estilos para el Modal */
+        /* Estilos para el Modal (MEJORADO PARA MÓVIL) */
         .modal {
-            display: none; /* Oculto por defecto */
+            display: none;
             position: fixed;
             z-index: 1000;
             left: 0;
@@ -42,26 +49,39 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.6);
+        }
+        .modal-content-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100%;
+            padding: 1rem;
         }
         .modal-content {
             background-color: #fefefe;
-            margin: 5% auto;
-            padding: 2rem;
-            border: 1px solid #888;
-            width: 90%;
+            padding: 1.5rem; /* Padding reducido para móvil */
+            width: 100%;
             max-width: 1200px;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             position: relative;
+            max-height: 90vh; /* Altura máxima para permitir scroll */
+            overflow-y: auto; /* Scroll vertical si el contenido es largo */
+        }
+         @media (min-width: 640px) {
+            .modal-content {
+                padding: 2rem;
+            }
         }
         .close-button {
             position: absolute;
-            top: 1rem;
-            right: 1.5rem;
+            top: 0.5rem;
+            right: 1rem;
             color: #aaa;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             cursor: pointer;
+            line-height: 1;
         }
         .close-button:hover,
         .close-button:focus {
@@ -77,8 +97,8 @@
 
         <!-- Cabecera -->
         <header class="text-center mb-10">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">Guía de Viajes: Navidad y Fin de Año 2025</h1>
-            <p class="text-lg text-gray-600">Informes detallados desde Vigo, Santiago y Oporto</p>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2">Guía de Viajes: Navidad y Fin de Año 2025</h1>
+            <p class="text-base sm:text-lg text-gray-600">Informes detallados desde Vigo, Santiago y Oporto</p>
         </header>
 
         <!-- Pestañas de Destinos -->
@@ -94,19 +114,19 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Card Londres -->
                     <div class="card p-6 flex flex-col">
-                        <h3 class="text-2xl font-bold mb-3 text-blue-700">Londres, Reino Unido</h3>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 text-blue-700">Londres, Reino Unido</h3>
                         <p class="text-gray-600 flex-grow">La capital británica se transforma en un epicentro de luces, mercados y celebraciones. Ideal para quienes buscan un ambiente festivo cosmopolita, compras y eventos de fama mundial como el Winter Wonderland o los fuegos artificiales del London Eye.</p>
                         <button onclick="openModal('modal-londres')" class="mt-6 w-full text-center bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition">Ver Informe Detallado</button>
                     </div>
                      <!-- Card Praga -->
                     <div class="card p-6 flex flex-col">
-                        <h3 class="text-2xl font-bold mb-3 text-blue-700">Praga, Rep. Checa</h3>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 text-blue-700">Praga, Rep. Checa</h3>
                         <p class="text-gray-600 flex-grow">Sumérgete en un auténtico cuento de hadas. Sus mercados navideños en plazas históricas, el olor a vino caliente y el ambiente medieval la convierten en el destino romántico por excelencia para vivir la magia de la Navidad.</p>
                         <button onclick="openModal('modal-praga')" class="mt-6 w-full text-center bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition">Ver Informe Detallado</button>
                     </div>
                      <!-- Card Cracovia -->
                     <div class="card p-6 flex flex-col">
-                        <h3 class="text-2xl font-bold mb-3 text-blue-700">Cracovia, Polonia</h3>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 text-blue-700">Cracovia, Polonia</h3>
                         <p class="text-gray-600 flex-grow">Una joya histórica con una relación calidad-precio inmejorable. Combina la belleza de una de las plazas medievales más grandes de Europa con la solemnidad de Auschwitz y la maravilla subterránea de las Minas de Sal.</p>
                         <button onclick="openModal('modal-cracovia')" class="mt-6 w-full text-center bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition">Ver Informe Detallado</button>
                     </div>
@@ -117,19 +137,19 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Card Gran Canaria -->
                     <div class="card p-6 flex flex-col">
-                        <h3 class="text-2xl font-bold mb-3 text-green-700">Gran Canaria, Canarias</h3>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 text-green-700">Gran Canaria, Canarias</h3>
                         <p class="text-gray-600 flex-grow">Escapa del frío sin salir de España. Disfruta de una Navidad en manga corta, visita el increíble Belén de Arena en la playa de Las Canteras y celebra el Fin de Año con las campanadas bajo un clima primaveral.</p>
                         <button onclick="openModal('modal-gran-canaria')" class="mt-6 w-full text-center bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 transition">Ver Informe Detallado</button>
                     </div>
                      <!-- Card Tenerife -->
                     <div class="card p-6 flex flex-col">
-                        <h3 class="text-2xl font-bold mb-3 text-green-700">Tenerife, Canarias</h3>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 text-green-700">Tenerife, Canarias</h3>
                         <p class="text-gray-600 flex-grow">Un "continente en miniatura" con clima suave. Sube al Teide, el pico más alto de España, avista ballenas en libertad y recorre bosques ancestrales. Una Navidad activa en contacto con la naturaleza volcánica.</p>
                         <button onclick="openModal('modal-tenerife')" class="mt-6 w-full text-center bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 transition">Ver Informe Detallado</button>
                     </div>
                      <!-- Próximamente -->
                     <div class="card p-6 flex flex-col bg-gray-50 items-center justify-center">
-                         <h3 class="text-2xl font-bold mb-3 text-gray-500">Más destinos...</h3>
+                         <h3 class="text-xl sm:text-2xl font-bold mb-3 text-gray-500">Más destinos...</h3>
                          <p class="text-gray-400 text-center">Informes detallados de Lanzarote, Fuerteventura, Malta, Agadir y más, próximamente.</p>
                     </div>
                 </div>
@@ -139,19 +159,19 @@
                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                      <!-- Card Edimburgo -->
                     <div class="card p-6 flex flex-col">
-                        <h3 class="text-2xl font-bold mb-3 text-purple-700">Edimburgo, Escocia</h3>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 text-purple-700">Edimburgo, Escocia</h3>
                         <p class="text-gray-600 flex-grow">Un destino con un encanto gótico y medieval único. En Navidad sus mercados son mágicos, pero su fama mundial llega en Fin de Año con el "Hogmanay", una de las fiestas más espectaculares y vibrantes del planeta para recibir el año nuevo.</p>
                         <button onclick="openModal('modal-edimburgo')" class="mt-6 w-full text-center bg-purple-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-purple-700 transition">Ver Informe Detallado</button>
                     </div>
                     <!-- Card Madeira -->
                     <div class="card p-6 flex flex-col">
-                        <h3 class="text-2xl font-bold mb-3 text-purple-700">Madeira, Portugal</h3>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 text-purple-700">Madeira, Portugal</h3>
                         <p class="text-gray-600 flex-grow">El jardín del Atlántico. Famosa por sus "levadas" para senderismo y su clima primaveral. Su Fin de Año es legendario, con uno de los mayores espectáculos de fuegos artificiales del mundo sobre la bahía de Funchal.</p>
                         <button onclick="openModal('modal-madeira')" class="mt-6 w-full text-center bg-purple-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-purple-700 transition">Ver Informe Detallado</button>
                     </div>
                     <!-- Card Ginebra / Chamonix -->
                     <div class="card p-6 flex flex-col">
-                        <h3 class="text-2xl font-bold mb-3 text-purple-700">Ginebra y Chamonix</h3>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 text-purple-700">Ginebra y Chamonix</h3>
                         <p class="text-gray-600 flex-grow">El sueño alpino por excelencia. Combina la sofisticación suiza de Ginebra con la majestuosidad de Chamonix, a los pies del Mont Blanc. Una escapada de paisajes nevados, lujo y aventura. (Advertencia: presupuesto ajustado).</p>
                         <button onclick="openModal('modal-ginebra')" class="mt-6 w-full text-center bg-purple-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-purple-700 transition">Ver Informe Detallado</button>
                     </div>
@@ -169,32 +189,32 @@
 
     <!-- Modal Londres -->
     <div id="modal-londres" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal('modal-londres')">&times;</span>
-            <div id="content-londres">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal('modal-londres')">&times;</span>
                 <header class="mb-8">
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4">Informe Detallado: Londres</h1>
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-4">Informe Detallado: Londres</h1>
                 </header>
                 <section class="mb-12">
-                    <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-blue-500 text-blue-800">Opción 1: Navidad (22 al 26 de Diciembre)</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 pb-2 border-b-2 border-blue-500 text-blue-800">Opción 1: Navidad (22 al 26 de Diciembre)</h2>
                     <div class="mb-8">
-                        <h3 class="text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
                         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow border-l-4 border-green-500">
                                 <h4 class="font-bold text-lg">Desde Santiago (SCQ) - <span class="text-green-600">Recomendado</span></h4>
                                 <p><strong>Aerolínea:</strong> Ryanair</p>
                                 <p><strong>Ida (22 Dic):</strong> 16:30 (SCQ) &rarr; 17:45 (STN)</p>
                                 <p><strong>Vuelta (26 Dic):</strong> 19:30 (STN) &rarr; 22:45 (SCQ)</p>
                                 <p class="mt-2 text-xl font-bold text-blue-600">Precio Aprox: 206€</p>
                             </div>
-                            <div class="bg-white p-4 rounded-lg shadow">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow">
                                 <h4 class="font-bold text-lg">Desde Vigo (VGO)</h4>
                                 <p><strong>Aerolínea:</strong> Ryanair</p>
                                 <p><strong>Ida (22 Dic):</strong> 15:00 (VGO) &rarr; 16:10 (STN)</p>
                                 <p><strong>Vuelta (26 Dic):</strong> 12:00 (STN) &rarr; 15:10 (VGO)</p>
                                 <p class="mt-2 text-xl font-bold text-blue-600">Precio Aprox: 394€</p>
                             </div>
-                            <div class="bg-white p-4 rounded-lg shadow">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow">
                                 <h4 class="font-bold text-lg">Desde Oporto (OPO)</h4>
                                 <p><strong>Aerolínea:</strong> easyJet</p>
                                 <p><strong>Ida (22 Dic):</strong> 12:45 (OPO) &rarr; 15:00 (LGW)</p>
@@ -204,7 +224,7 @@
                         </div>
                     </div>
                     <div class="mb-8 bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
                         <p class="mb-4">Se recomienda buscar hoteles en zonas como Paddington, South Kensington o cerca de estaciones de metro principales para moverse con facilidad. Los precios en Navidad son altos.</p>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Hotel 3★ (4 noches, 2p):</strong> 600€ - 900€</li>
@@ -213,7 +233,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-semibold mb-4">Itinerario Detallado de Navidad</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Itinerario Detallado de Navidad</h3>
                         <div class="space-y-4">
                             <p><strong>Día 1 (22 Dic):</strong> Llegada a Londres (STN/LGW). Traslado al hotel (tren Stansted Express o Gatwick Express son los más rápidos). Por la tarde-noche, primer contacto con las luces de Navidad en <strong>Regent Street y Oxford Street</strong>, seguido de una cena en la zona del <strong>Soho</strong>.</p>
                             <p><strong>Día 2 (23 Dic):</strong> Mañana completa en <strong>Hyde Park Winter Wonderland</strong>, un gigantesco parque temático navideño con mercados, atracciones y puestos de comida. Por la tarde, paseo por <strong>South Bank</strong>, junto al Támesis, disfrutando del mercado navideño con vistas al London Eye.</p>
@@ -224,25 +244,25 @@
                     </div>
                 </section>
                 <section>
-                    <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-red-500 text-red-800">Opción 2: Fin de Año (29 de Diciembre al 2 de Enero)</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 pb-2 border-b-2 border-red-500 text-red-800">Opción 2: Fin de Año (29 de Diciembre al 2 de Enero)</h2>
                      <div class="mb-8">
-                        <h3 class="text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
                         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow border-l-4 border-green-500">
                                 <h4 class="font-bold text-lg">Desde Santiago (SCQ) - <span class="text-green-600">Recomendado</span></h4>
                                 <p><strong>Aerolínea:</strong> Ryanair</p>
                                 <p><strong>Ida (29 Dic):</strong> 16:30 (SCQ) &rarr; 17:45 (STN)</p>
                                 <p><strong>Vuelta (2 Ene):</strong> 19:30 (STN) &rarr; 22:45 (SCQ)</p>
                                 <p class="mt-2 text-xl font-bold text-red-600">Precio Aprox: 206€</p>
                             </div>
-                            <div class="bg-white p-4 rounded-lg shadow">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow">
                                 <h4 class="font-bold text-lg">Desde Oporto (OPO)</h4>
                                 <p><strong>Aerolínea:</strong> Ryanair</p>
                                 <p><strong>Ida (29 Dic):</strong> 20:05 (OPO) &rarr; 22:20 (STN)</p>
                                 <p><strong>Vuelta (2 Ene):</strong> 17:55 (STN) &rarr; 20:15 (OPO)</p>
                                 <p class="mt-2 text-xl font-bold text-red-600">Precio Aprox: 276€</p>
                             </div>
-                            <div class="bg-white p-4 rounded-lg shadow">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow">
                                 <h4 class="font-bold text-lg">Desde Vigo (VGO)</h4>
                                 <p><strong>Aerolínea:</strong> Ryanair</p>
                                 <p><strong>Ida (29 Dic):</strong> 15:00 (VGO) &rarr; 16:10 (STN)</p>
@@ -252,7 +272,7 @@
                         </div>
                     </div>
                     <div class="mb-8 bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
                         <p class="mb-4">Nochevieja es la noche más cara del año. Reservar con la máxima antelación es crucial. Considerar zonas bien comunicadas pero ligeramente fuera del centro absoluto puede abaratar costes.</p>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Hotel 3★ (4 noches, 2p):</strong> 800€ - 1.200€</li>
@@ -261,7 +281,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-semibold mb-4">Itinerario Detallado de Fin de Año</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Itinerario Detallado de Fin de Año</h3>
                         <div class="space-y-4">
                             <p><strong>Día 1 (29 Dic):</strong> Llegada. Por la noche, explorar el ambiente de <strong>Covent Garden</strong>, que todavía conserva su decoración navideña y mercados.</p>
                             <p><strong>Día 2 (30 Dic):</strong> Mañana cultural en los museos de South Kensington (Museo de Historia Natural, de Ciencia o V&A, todos gratuitos). Por la tarde, patinaje sobre hielo en la pista de <strong>Somerset House</strong>.</p>
@@ -273,7 +293,7 @@
                 </section>
                  <section class="mt-12 grid md:grid-cols-2 gap-8">
                     <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Gastronomía Festiva</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Gastronomía Festiva</h3>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Mince Pies:</strong> Pastelitos dulces rellenos de fruta y especias.</li>
                             <li><strong>Mulled Wine:</strong> Vino caliente especiado, imprescindible en los mercados.</li>
@@ -283,7 +303,7 @@
                         </ul>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Transporte</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Transporte</h3>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Del Aeropuerto:</strong> Stansted (STN) y Gatwick (LGW) tienen trenes express al centro (la opción más rápida). Luton (LTN) tiene bus o tren.</li>
                             <li><strong>En la ciudad:</strong> Usar una tarjeta contactless o una Oyster Card para el metro (The Tube) y los autobuses. Es el método más económico y eficiente.</li>
@@ -297,25 +317,25 @@
     
     <!-- Modal Gran Canaria -->
     <div id="modal-gran-canaria" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal('modal-gran-canaria')">&times;</span>
-             <div id="content-gran-canaria">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal('modal-gran-canaria')">&times;</span>
                  <header class="mb-8">
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4">Informe Detallado: Gran Canaria</h1>
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-4">Informe Detallado: Gran Canaria</h1>
                 </header>
                 <section class="mb-12">
-                    <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-green-500 text-green-800">Opción 1: Navidad (22 al 26 de Diciembre)</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 pb-2 border-b-2 border-green-500 text-green-800">Opción 1: Navidad (22 al 26 de Diciembre)</h2>
                     <div class="mb-8">
-                        <h3 class="text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
                         <div class="grid md:grid-cols-2 gap-6">
-                            <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow border-l-4 border-green-500">
                                 <h4 class="font-bold text-lg">Desde Santiago (SCQ) - <span class="text-green-600">Recomendado</span></h4>
                                 <p><strong>Aerolínea:</strong> Ryanair</p>
                                 <p><strong>Ida (22 Dic):</strong> 14:00 (SCQ) &rarr; 15:55 (LPA)</p>
                                 <p><strong>Vuelta (26 Dic):</strong> 09:30 (LPA) &rarr; 13:25 (SCQ)</p>
                                 <p class="mt-2 text-xl font-bold text-green-600">Precio Aprox: 480€</p>
                             </div>
-                            <div class="bg-white p-4 rounded-lg shadow">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow">
                                 <h4 class="font-bold text-lg">Desde Oporto (OPO)</h4>
                                 <p><strong>Aerolínea:</strong> Ryanair</p>
                                 <p><strong>Ida (22 Dic):</strong> 06:30 (OPO) &rarr; 08:45 (LPA)</p>
@@ -325,7 +345,7 @@
                         </div>
                     </div>
                     <div class="mb-8 bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
                         <p class="mb-4">Para ambiente festivo y playa, alojarse en Las Palmas (zona Las Canteras) o en el sur (Maspalomas, Playa del Inglés). Se recomienda alquilar un coche para explorar la isla.</p>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Apartamento/Hotel 3★ (4 noches, 2p):</strong> 400€ - 700€</li>
@@ -334,7 +354,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-semibold mb-4">Itinerario Detallado de Navidad</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Itinerario Detallado de Navidad</h3>
                         <div class="space-y-4">
                             <p><strong>Día 1 (22 Dic):</strong> Llegada a Gran Canaria (LPA). Recogida del coche de alquiler. Traslado al alojamiento. Tarde de relax y paseo por el paseo marítimo de <strong>Las Canteras</strong>. Por la noche, visita obligada al <strong>Belén de Arena</strong>, una impresionante obra de arte en la misma playa.</p>
                             <p><strong>Día 2 (23 Dic):</strong> Día para explorar el sur. Mañana en las espectaculares <strong>Dunas de Maspalomas</strong>, un desierto en miniatura junto al mar. Tarde de paseo y compras por el paseo de Meloneras, junto al faro.</p>
@@ -345,10 +365,10 @@
                     </div>
                 </section>
                 <section>
-                    <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-orange-500 text-orange-800">Opción 2: Fin de Año (29 de Diciembre al 2 de Enero)</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 pb-2 border-b-2 border-orange-500 text-orange-800">Opción 2: Fin de Año (29 de Diciembre al 2 de Enero)</h2>
                     <p>Las opciones de vuelo y presupuesto son muy similares a las de Navidad. El itinerario se adapta a las celebraciones de Nochevieja.</p>
                     <div>
-                        <h3 class="text-2xl font-semibold mb-4 mt-8">Itinerario Detallado de Fin de Año</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4 mt-8">Itinerario Detallado de Fin de Año</h3>
                         <div class="space-y-4">
                             <p><strong>Día 1-2 (29-30 Dic):</strong> Se mantienen las rutas por el interior (Tejeda, Teror) y la exploración del sur (Dunas de Maspalomas).</p>
                             <p><strong>Día 3 (31 Dic - Nochevieja):</strong> Mañana de relax en la playa o visitando el Puerto de Mogán, la "pequeña Venecia" de Canarias. Por la noche, la fiesta se concentra en la <strong>Plaza de Saulo Torón</strong> (en Las Canteras) o en la zona de <strong>Playa del Inglés</strong>, con fuegos artificiales, conciertos y uvas en la playa.</p>
@@ -359,7 +379,7 @@
                 </section>
                 <section class="mt-12 grid md:grid-cols-2 gap-8">
                     <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Gastronomía Canaria</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Gastronomía Canaria</h3>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Papas arrugadas con mojo picón:</strong> Imprescindible.</li>
                             <li><strong>Sancocho:</strong> Pescado salado con papas y batata, típico en días festivos.</li>
@@ -368,7 +388,7 @@
                         </ul>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Transporte</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Transporte</h3>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Coche de Alquiler:</strong> <strong class="text-red-600">Esencial</strong> para explorar la isla con libertad. Reservar con mucha antelación.</li>
                             <li><strong>Guaguas (Autobuses):</strong> La red de autobuses de Global conecta bien la capital con el sur y los principales pueblos.</li>
@@ -381,25 +401,25 @@
     
     <!-- Modal Edimburgo -->
     <div id="modal-edimburgo" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal('modal-edimburgo')">&times;</span>
-             <div id="content-edimburgo">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal('modal-edimburgo')">&times;</span>
                  <header class="mb-8">
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4">Informe Detallado: Edimburgo</h1>
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-4">Informe Detallado: Edimburgo</h1>
                 </header>
                 <section class="mb-12">
-                    <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-purple-500 text-purple-800">Opción 1: Navidad (22 al 26 de Diciembre)</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 pb-2 border-b-2 border-purple-500 text-purple-800">Opción 1: Navidad (22 al 26 de Diciembre)</h2>
                     <div class="mb-8">
-                        <h3 class="text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
                         <div class="grid md:grid-cols-2 gap-6">
-                            <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow border-l-4 border-green-500">
                                 <h4 class="font-bold text-lg">Desde Oporto (OPO) - <span class="text-green-600">Recomendado</span></h4>
                                 <p><strong>Aerolínea:</strong> Ryanair</p>
                                 <p><strong>Ida (22 Dic):</strong> 19:40 (OPO) &rarr; 22:10 (EDI)</p>
                                 <p><strong>Vuelta (26 Dic):</strong> 06:45 (EDI) &rarr; 09:25 (OPO)</p>
                                 <p class="mt-2 text-xl font-bold text-purple-600">Precio Aprox: 368€</p>
                             </div>
-                            <div class="bg-white p-4 rounded-lg shadow">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow">
                                 <h4 class="font-bold text-lg">Desde Santiago (SCQ) - Con escala</h4>
                                 <p><strong>Aerolínea:</strong> Vueling/Ryanair (combinado)</p>
                                 <p><strong>Ida (22 Dic):</strong> 14:10 (SCQ) &rarr; 20:40 (EDI) vía BCN</p>
@@ -409,7 +429,7 @@
                         </div>
                     </div>
                     <div class="mb-8 bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
                         <p class="mb-4">Alojamientos cerca de la Royal Mile o Princes Street son ideales para estar en el centro de la acción. La ciudad es muy caminable.</p>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Hotel 3★ (4 noches, 2p):</strong> 550€ - 800€</li>
@@ -418,7 +438,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-semibold mb-4">Itinerario Detallado de Navidad</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Itinerario Detallado de Navidad</h3>
                         <div class="space-y-4">
                             <p><strong>Día 1 (22 Dic):</strong> Llegada nocturna a Edimburgo (EDI). Traslado al centro en el tranvía o bus Airlink 100. Check-in y primer paseo para ver el Castillo iluminado.</p>
                             <p><strong>Día 2 (23 Dic):</strong> Mañana inmersiva en el <strong>Mercado de Navidad de East Princes Street Gardens</strong>: noria, atracciones y puestos de comida. Por la tarde, subir la <strong>Royal Mile</strong> desde el Palacio de Holyroodhouse hasta el Castillo.</p>
@@ -429,18 +449,18 @@
                     </div>
                 </section>
                 <section>
-                    <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-pink-500 text-pink-800">Opción 2: Fin de Año - HOGMANAY (29 de Diciembre al 2 de Enero)</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 pb-2 border-b-2 border-pink-500 text-pink-800">Opción 2: Fin de Año - HOGMANAY (29 de Diciembre al 2 de Enero)</h2>
                     <div class="mb-8">
-                        <h3 class="text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
                         <div class="grid md:grid-cols-2 gap-6">
-                            <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow border-l-4 border-green-500">
                                 <h4 class="font-bold text-lg">Desde Oporto (OPO) - <span class="text-green-600">Recomendado</span></h4>
                                 <p><strong>Aerolínea:</strong> Ryanair</p>
                                 <p><strong>Ida (29 Dic):</strong> 19:40 (OPO) &rarr; 22:10 (EDI)</p>
                                 <p><strong>Vuelta (2 Ene):</strong> 06:45 (EDI) &rarr; 09:25 (OPO)</p>
                                 <p class="mt-2 text-xl font-bold text-pink-600">Precio Aprox: 530€</p>
                             </div>
-                            <div class="bg-white p-4 rounded-lg shadow">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow">
                                 <h4 class="font-bold text-lg">Desde Santiago (SCQ) - Con escala</h4>
                                 <p><strong>Aerolínea:</strong> Varios (combinado)</p>
                                 <p><strong>Ida (29 Dic):</strong> Horarios variables con escala en BCN o DUB.</p>
@@ -450,7 +470,7 @@
                         </div>
                     </div>
                     <div class="mb-8 bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
                         <p class="mb-4">Hogmanay es temporada altísima. Los precios del alojamiento se disparan. Es <strong class="text-red-600">imperativo</strong> reservar con 6-9 meses de antelación.</p>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Hotel 3★ (4 noches, 2p):</strong> 800€ - 1.300€</li>
@@ -459,7 +479,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-semibold mb-4">Itinerario Detallado de Hogmanay</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Itinerario Detallado de Hogmanay</h3>
                         <div class="space-y-4">
                             <p><strong>Día 1 (29 Dic):</strong> Llegada nocturna. Dejar las maletas y salir a sentir la energía pre-Hogmanay en los pubs de la Old Town.</p>
                             <p><strong>Día 2 (30 Dic):</strong> Explorar la New Town y subir al Monumento a Scott. Por la noche, el evento estrella: la <strong>Procesión de las Antorchas (Torchlight Procession)</strong>. Comprar ticket para participar en este río de fuego por el centro de la ciudad. Una experiencia inolvidable.</p>
@@ -471,7 +491,7 @@
                 </section>
                 <section class="mt-12 grid md:grid-cols-2 gap-8">
                     <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Gastronomía Escocesa</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Gastronomía Escocesa</h3>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Haggis, Neeps and Tatties:</strong> El plato nacional. Hay que probarlo.</li>
                             <li><strong>Cullen Skink:</strong> Una cremosa sopa de pescado ahumado.</li>
@@ -480,7 +500,7 @@
                         </ul>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Transporte</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Transporte</h3>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Del Aeropuerto:</strong> El tranvía y el bus Airlink 100 son las mejores opciones para llegar al centro. Frecuentes y eficientes.</li>
                             <li><strong>En la ciudad:</strong> El centro de Edimburgo es muy compacto y se recorre perfectamente a pie. Para distancias largas, la red de autobuses Lothian es excelente.</li>
@@ -493,25 +513,25 @@
 
     <!-- Modal Praga -->
     <div id="modal-praga" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal('modal-praga')">&times;</span>
-             <div id="content-praga">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal('modal-praga')">&times;</span>
                  <header class="mb-8">
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4">Informe Detallado: Praga</h1>
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-4">Informe Detallado: Praga</h1>
                 </header>
                 <section class="mb-12">
-                    <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-blue-500 text-blue-800">Opción 1: Navidad (22 al 26 de Diciembre) - <span class="text-green-600">¡Muy Recomendado!</span></h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 pb-2 border-b-2 border-blue-500 text-blue-800">Opción 1: Navidad (22 al 26 de Diciembre) - <span class="text-green-600">¡Muy Recomendado!</span></h2>
                     <div class="mb-8">
-                        <h3 class="text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
                         <div class="grid md:grid-cols-2 gap-6">
-                            <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow border-l-4 border-green-500">
                                 <h4 class="font-bold text-lg">Desde Oporto (OPO) - Con 1 escala</h4>
                                 <p><strong>Aerolínea:</strong> Lufthansa</p>
                                 <p><strong>Ida (22 Dic):</strong> 16:15 (OPO) &rarr; 22:25 (PRG) vía Frankfurt</p>
                                 <p><strong>Vuelta (26 Dic):</strong> 18:35 (PRG) &rarr; 23:55 (OPO) vía Frankfurt</p>
                                 <p class="mt-2 text-xl font-bold text-blue-600">Precio Aprox: 966€</p>
                             </div>
-                            <div class="bg-white p-4 rounded-lg shadow">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow">
                                 <h4 class="font-bold text-lg">Desde Santiago (SCQ) - Con 1 escala</h4>
                                 <p><strong>Aerolínea:</strong> Vueling</p>
                                 <p><strong>Ida (22 Dic):</strong> 13:40 (SCQ) &rarr; 20:25 (PRG) vía Barcelona</p>
@@ -521,7 +541,7 @@
                         </div>
                     </div>
                     <div class="mb-8 bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
                         <p class="mb-4">Praga ofrece una excelente relación calidad-precio en alojamiento. Buscar en los barrios de Staré Město (Ciudad Vieja) o Malá Strana para una experiencia mágica.</p>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Hotel 4★ (4 noches, 2p):</strong> 350€ - 550€</li>
@@ -530,7 +550,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-semibold mb-4">Itinerario Detallado de Navidad</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Itinerario Detallado de Navidad</h3>
                         <div class="space-y-4">
                             <p><strong>Día 1 (22 Dic):</strong> Llegada a Praga (PRG). Traslado al hotel. Salida nocturna para una primera impresión de la <strong>Plaza de la Ciudad Vieja</strong> y su espectacular mercado y árbol de Navidad. Cena en un puesto del mercado.</p>
                             <p><strong>Día 2 (23 Dic):</strong> Mañana dedicada a explorar el <strong>Castillo de Praga</strong>: la Catedral de San Vito, el Antiguo Palacio Real y el Callejón del Oro. Bajar paseando por el barrio de <strong>Malá Strana</strong>. Por la tarde, disfrutar del mercado de la Plaza de Malá Strana, más pequeño y acogedor.</p>
@@ -541,15 +561,15 @@
                     </div>
                 </section>
                 <section>
-                    <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-red-500 text-red-800">Opción 2: Fin de Año (29 de Diciembre al 2 de Enero)</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 pb-2 border-b-2 border-red-500 text-red-800">Opción 2: Fin de Año (29 de Diciembre al 2 de Enero)</h2>
                     <div class="mb-8">
-                        <h3 class="text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
                         <p>Las tarifas aéreas para Fin de Año a Praga tienden a ser significativamente más altas, a menudo superando los 800-1000€ por persona, por lo que es una opción menos recomendable si se quiere mantener el presupuesto ajustado. La Navidad ofrece una mejor relación calidad-precio.</p>
                     </div>
                 </section>
                 <section class="mt-12 grid md:grid-cols-2 gap-8">
                     <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Gastronomía Festiva Checa</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Gastronomía Festiva Checa</h3>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Svařák:</strong> Vino caliente especiado, la bebida de los mercados.</li>
                             <li><strong>Trdelník:</strong> Rollo de masa dulce asado y cubierto de azúcar y canela.</li>
@@ -558,7 +578,7 @@
                         </ul>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Transporte</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Transporte</h3>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Del Aeropuerto:</strong> La opción más económica es el autobús 119 hasta la estación de metro Nádraží Veleslavín y desde allí al centro. También hay shuttles y taxis.</li>
                             <li><strong>En la ciudad:</strong> El centro histórico es muy caminable. Para distancias largas, la red de tranvías y metro es excelente, eficiente y económica. Comprar abonos de 24 o 72 horas.</li>
@@ -571,18 +591,18 @@
     
     <!-- Modal Cracovia -->
     <div id="modal-cracovia" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal('modal-cracovia')">&times;</span>
-             <div id="content-cracovia">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal('modal-cracovia')">&times;</span>
                  <header class="mb-8">
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4">Informe Detallado: Cracovia y Zakopane</h1>
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-4">Informe Detallado: Cracovia y Zakopane</h1>
                 </header>
                 <section class="mb-12">
-                    <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-blue-500 text-blue-800">Opción Navidad o Fin de Año (Excelente relación calidad-precio)</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 pb-2 border-b-2 border-blue-500 text-blue-800">Opción Navidad o Fin de Año (Excelente relación calidad-precio)</h2>
                     <div class="mb-8">
-                        <h3 class="text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
                         <div class="grid md:grid-cols-2 gap-6">
-                            <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow border-l-4 border-green-500">
                                 <h4 class="font-bold text-lg">Desde Oporto (OPO) - <span class="text-green-600">Recomendado</span></h4>
                                 <p><strong>Aerolínea:</strong> Ryanair (Directo)</p>
                                 <p><strong>Fechas (Navidad):</strong> 22 Dic - 26 Dic</p>
@@ -592,7 +612,7 @@
                         </div>
                     </div>
                     <div class="mb-8 bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
                         <p class="mb-4">Cracovia es muy asequible. Se recomienda un apartamento de alta calidad en el centro (Stare Miasto) o en el barrio judío (Kazimierz).</p>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Apartamento (4 noches, 2p):</strong> 320€ - 560€</li>
@@ -601,7 +621,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-semibold mb-4">Itinerario Detallado</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Itinerario Detallado</h3>
                         <div class="space-y-4">
                             <p><strong>Día 1:</strong> Llegada a Cracovia (KRK) y primer contacto con el Mercado de Navidad de la <strong>Plaza del Mercado (Rynek Główny)</strong>.</p>
                             <p><strong>Día 2:</strong> Mañana en la colina de <strong>Wawel (Castillo y Catedral)</strong>. Tarde en el barrio judío de <strong>Kazimierz</strong>.</p>
@@ -613,7 +633,7 @@
                 </section>
                 <section class="mt-12 grid md:grid-cols-2 gap-8">
                     <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Gastronomía Polaca</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Gastronomía Polaca</h3>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Pierogi:</strong> Empanadillas rellenas, un clásico.</li>
                             <li><strong>Żurek:</strong> Sopa agria servida en pan.</li>
@@ -622,7 +642,7 @@
                         </ul>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-2xl font-semibold mb-4">Transporte</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Transporte</h3>
                         <ul class="list-disc list-inside space-y-2">
                             <li><strong>Del Aeropuerto:</strong> Tren directo y rápido a la estación central de Cracovia.</li>
                             <li><strong>En la ciudad:</strong> El centro es muy caminable. La red de tranvías es eficiente para distancias más largas.</li>
@@ -635,147 +655,153 @@
     
     <!-- Modal Tenerife -->
     <div id="modal-tenerife" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal('modal-tenerife')">&times;</span>
-            <header class="mb-8">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4">Informe Detallado: Tenerife</h1>
-            </header>
-            <section class="mb-12">
-                <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-green-500 text-green-800">Opción Navidad / Fin de Año</h2>
-                <div class="mb-8">
-                    <h3 class="text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="bg-white p-4 rounded-lg shadow">
-                            <h4 class="font-bold text-lg">Desde Vigo (VGO)</h4>
-                            <p><strong>Aerolínea(s):</strong> Binter, Iberia</p>
-                            <p class="mt-2 text-xl font-bold text-green-600">Precio Aprox: 600€ - 900€</p>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
-                            <h4 class="font-bold text-lg">Desde Santiago (SCQ)</h4>
-                            <p><strong>Aerolínea(s):</strong> Vueling, Ryanair</p>
-                            <p class="mt-2 text-xl font-bold text-green-600">Precio Aprox: 600€ - 900€</p>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow">
-                            <h4 class="font-bold text-lg">Desde Oporto (OPO)</h4>
-                            <p><strong>Aerolínea(s):</strong> Ryanair, easyJet</p>
-                            <p class="mt-2 text-xl font-bold text-green-600">Precio Aprox: 600€ - 900€</p>
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal('modal-tenerife')">&times;</span>
+                <header class="mb-8">
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-4">Informe Detallado: Tenerife</h1>
+                </header>
+                <section class="mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 pb-2 border-b-2 border-green-500 text-green-800">Opción Navidad / Fin de Año</h2>
+                    <div class="mb-8">
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow">
+                                <h4 class="font-bold text-lg">Desde Vigo (VGO)</h4>
+                                <p><strong>Aerolínea(s):</strong> Binter, Iberia</p>
+                                <p class="mt-2 text-xl font-bold text-green-600">Precio Aprox: 600€ - 900€</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg shadow border-l-4 border-green-500">
+                                <h4 class="font-bold text-lg">Desde Santiago (SCQ)</h4>
+                                <p><strong>Aerolínea(s):</strong> Vueling, Ryanair</p>
+                                <p class="mt-2 text-xl font-bold text-green-600">Precio Aprox: 600€ - 900€</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg shadow">
+                                <h4 class="font-bold text-lg">Desde Oporto (OPO)</h4>
+                                <p><strong>Aerolínea(s):</strong> Ryanair, easyJet</p>
+                                <p class="mt-2 text-xl font-bold text-green-600">Precio Aprox: 600€ - 900€</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="mb-8 bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
-                    <p class="mb-4">Se recomienda base en el sur (Costa Adeje) por el clima. Alquiler de coche es esencial.</p>
-                    <ul class="list-disc list-inside space-y-2">
-                        <li><strong>Hotel 4★ (4 noches, 2p):</strong> 600€ - 880€</li>
-                        <li><strong>Alquiler Coche (5 días):</strong> 250€</li>
-                        <li><strong>Presupuesto total (2p):</strong> 1.550€ - 2.030€</li>
-                        <li class="font-bold text-lg">Presupuesto por persona: 775€ - 1.015€</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4">Itinerario Detallado</h3>
-                    <div class="space-y-4">
-                        <p><strong>Día 1:</strong> Llegada a Tenerife Sur (TFS), recogida del coche y relax en <strong>Playa del Duque</strong>.</p>
-                        <p><strong>Día 2:</strong> Día completo en el <strong>Parque Nacional del Teide</strong>, subiendo en teleférico para vistas espectaculares.</p>
-                        <p><strong>Día 3:</strong> Excursión en barco para avistar cetáceos y ver los <strong>Acantilados de Los Gigantes</strong>. Tarde en el caserío de <strong>Masca</strong>.</p>
-                        <p><strong>Día 4:</strong> Ruta por el norte: <strong>La Laguna</strong> (Patrimonio de la Humanidad) y los bosques de laurisilva del <strong>Parque Rural de Anaga</strong>.</p>
-                        <p><strong>Día 5:</strong> Mañana en <strong>Siam Park</strong> o relax en la playa de <strong>El Médano</strong> y regreso.</p>
+                    <div class="mb-8 bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
+                        <p class="mb-4">Se recomienda base en el sur (Costa Adeje) por el clima. Alquiler de coche es esencial.</p>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong>Hotel 4★ (4 noches, 2p):</strong> 600€ - 880€</li>
+                            <li><strong>Alquiler Coche (5 días):</strong> 250€</li>
+                            <li><strong>Presupuesto total (2p):</strong> 1.550€ - 2.030€</li>
+                            <li class="font-bold text-lg">Presupuesto por persona: 775€ - 1.015€</li>
+                        </ul>
                     </div>
-                </div>
-            </section>
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Itinerario Detallado</h3>
+                        <div class="space-y-4">
+                            <p><strong>Día 1:</strong> Llegada a Tenerife Sur (TFS), recogida del coche y relax en <strong>Playa del Duque</strong>.</p>
+                            <p><strong>Día 2:</strong> Día completo en el <strong>Parque Nacional del Teide</strong>, subiendo en teleférico para vistas espectaculares.</p>
+                            <p><strong>Día 3:</strong> Excursión en barco para avistar cetáceos y ver los <strong>Acantilados de Los Gigantes</strong>. Tarde en el caserío de <strong>Masca</strong>.</p>
+                            <p><strong>Día 4:</strong> Ruta por el norte: <strong>La Laguna</strong> (Patrimonio de la Humanidad) y los bosques de laurisilva del <strong>Parque Rural de Anaga</strong>.</p>
+                            <p><strong>Día 5:</strong> Mañana en <strong>Siam Park</strong> o relax en la playa de <strong>El Médano</strong> y regreso.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 
     <!-- Modal Madeira -->
     <div id="modal-madeira" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal('modal-madeira')">&times;</span>
-            <header class="mb-8">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4">Informe Detallado: Madeira</h1>
-            </header>
-            <section class="mb-12">
-                <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-purple-500 text-purple-800">Opción Fin de Año (29 de Diciembre al 2 de Enero)</h2>
-                <div class="mb-8">
-                    <h3 class="text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
-                    <div class="grid md:grid-cols-1 gap-6">
-                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
-                            <h4 class="font-bold text-lg">Desde Oporto (OPO) - <span class="text-green-600">Recomendado</span></h4>
-                            <p><strong>Aerolínea(s):</strong> Ryanair, easyJet, TAP</p>
-                            <p class="mt-2 text-xl font-bold text-purple-600">Precio Aprox: 700€ - 1.000€</p>
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal('modal-madeira')">&times;</span>
+                <header class="mb-8">
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-4">Informe Detallado: Madeira</h1>
+                </header>
+                <section class="mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 pb-2 border-b-2 border-purple-500 text-purple-800">Opción Fin de Año (29 de Diciembre al 2 de Enero)</h2>
+                    <div class="mb-8">
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
+                        <div class="grid md:grid-cols-1 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow border-l-4 border-green-500">
+                                <h4 class="font-bold text-lg">Desde Oporto (OPO) - <span class="text-green-600">Recomendado</span></h4>
+                                <p><strong>Aerolínea(s):</strong> Ryanair, easyJet, TAP</p>
+                                <p class="mt-2 text-xl font-bold text-purple-600">Precio Aprox: 700€ - 1.000€</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="mb-8 bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
-                    <p class="mb-4">Alojarse en Funchal es imprescindible para disfrutar del Fin de Año. Reservar con máxima antelación.</p>
-                    <ul class="list-disc list-inside space-y-2">
-                        <li><strong>Hotel 4★ con vistas (4 noches, 2p):</strong> 720€ - 1.200€</li>
-                        <li><strong>Presupuesto total (2p):</strong> 1.670€ - 2.450€</li>
-                        <li class="font-bold text-lg">Presupuesto por persona: 835€ - 1.225€</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4">Itinerario Detallado de Fin de Año</h3>
-                    <div class="space-y-4">
-                        <p><strong>Día 1:</strong> Llegada a Funchal (FNC). Paseo por el <strong>Mercado dos Lavradores</strong> y la <strong>Rua de Santa Maria</strong>.</p>
-                        <p><strong>Día 2:</strong> Excursión a las cumbres: <strong>Pico do Arieiro</strong> y las casas típicas de <strong>Santana</strong>.</p>
-                        <p><strong>Día 3 (Nochevieja):</strong> Mañana de senderismo por una <strong>"levada"</strong> como la de las 25 Fontes. Noche mágica viendo el <strong>espectacular castillo de fuegos artificiales</strong> sobre la bahía de Funchal.</p>
-                        <p><strong>Día 4 (Año Nuevo):</strong> Ruta por la costa noroeste: <strong>Câmara de Lobos</strong>, el acantilado de <strong>Cabo Girão</strong> y un baño en las piscinas naturales de <strong>Porto Moniz</strong>.</p>
-                        <p><strong>Día 5:</strong> Subida en teleférico a <strong>Monte</strong> y descenso en los tradicionales <strong>"carros de cesto"</strong> antes de volver.</p>
+                    <div class="mb-8 bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
+                        <p class="mb-4">Alojarse en Funchal es imprescindible para disfrutar del Fin de Año. Reservar con máxima antelación.</p>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong>Hotel 4★ con vistas (4 noches, 2p):</strong> 720€ - 1.200€</li>
+                            <li><strong>Presupuesto total (2p):</strong> 1.670€ - 2.450€</li>
+                            <li class="font-bold text-lg">Presupuesto por persona: 835€ - 1.225€</li>
+                        </ul>
                     </div>
-                </div>
-            </section>
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Itinerario Detallado de Fin de Año</h3>
+                        <div class="space-y-4">
+                            <p><strong>Día 1:</strong> Llegada a Funchal (FNC). Paseo por el <strong>Mercado dos Lavradores</strong> y la <strong>Rua de Santa Maria</strong>.</p>
+                            <p><strong>Día 2:</strong> Excursión a las cumbres: <strong>Pico do Arieiro</strong> y las casas típicas de <strong>Santana</strong>.</p>
+                            <p><strong>Día 3 (Nochevieja):</strong> Mañana de senderismo por una <strong>"levada"</strong> como la de las 25 Fontes. Noche mágica viendo el <strong>espectacular castillo de fuegos artificiales</strong> sobre la bahía de Funchal.</p>
+                            <p><strong>Día 4 (Año Nuevo):</strong> Ruta por la costa noroeste: <strong>Câmara de Lobos</strong>, el acantilado de <strong>Cabo Girão</strong> y un baño en las piscinas naturales de <strong>Porto Moniz</strong>.</p>
+                            <p><strong>Día 5:</strong> Subida en teleférico a <strong>Monte</strong> y descenso en los tradicionales <strong>"carros de cesto"</strong> antes de volver.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
     
     <!-- Modal Ginebra -->
     <div id="modal-ginebra" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal('modal-ginebra')">&times;</span>
-            <header class="mb-8">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4">Informe Detallado: Ginebra y Chamonix</h1>
-            </header>
-            <section class="mb-12">
-                <div class="p-4 bg-red-100 border-l-4 border-red-500 text-red-700 mb-6">
-                    <p class="font-bold">Advertencia de Presupuesto</p>
-                    <p>Este es un destino de alto coste. El presupuesto de 1.500€ por persona será muy ajustado y se puede superar con facilidad.</p>
-                </div>
-                <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-purple-500 text-purple-800">Opción Navidad / Fin de Año</h2>
-                <div class="mb-8">
-                    <h3 class="text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
-                            <h4 class="font-bold text-lg">Desde Oporto (OPO)</h4>
-                            <p><strong>Aerolínea(s):</strong> easyJet, TAP</p>
-                            <p class="mt-2 text-xl font-bold text-purple-600">Precio Aprox: 600€ - 900€</p>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow">
-                            <h4 class="font-bold text-lg">Desde Santiago (SCQ)</h4>
-                            <p><strong>Aerolínea(s):</strong> easyJet</p>
-                            <p class="mt-2 text-xl font-bold text-purple-600">Precio Aprox: 700€ - 1.000€</p>
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal('modal-ginebra')">&times;</span>
+                <header class="mb-8">
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-4">Informe Detallado: Ginebra y Chamonix</h1>
+                </header>
+                <section class="mb-12">
+                    <div class="p-4 bg-red-100 border-l-4 border-red-500 text-red-700 mb-6">
+                        <p class="font-bold">Advertencia de Presupuesto</p>
+                        <p>Este es un destino de alto coste. El presupuesto de 1.500€ por persona será muy ajustado y se puede superar con facilidad.</p>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 pb-2 border-b-2 border-purple-500 text-purple-800">Opción Navidad / Fin de Año</h2>
+                    <div class="mb-8">
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Opciones de Vuelos (Precio para 2 personas, ida y vuelta)</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow border-l-4 border-green-500">
+                                <h4 class="font-bold text-lg">Desde Oporto (OPO)</h4>
+                                <p><strong>Aerolínea(s):</strong> easyJet, TAP</p>
+                                <p class="mt-2 text-xl font-bold text-purple-600">Precio Aprox: 600€ - 900€</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg shadow">
+                                <h4 class="font-bold text-lg">Desde Santiago (SCQ)</h4>
+                                <p><strong>Aerolínea(s):</strong> easyJet</p>
+                                <p class="mt-2 text-xl font-bold text-purple-600">Precio Aprox: 700€ - 1.000€</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="mb-8 bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
-                    <p class="mb-4">Ginebra es una de las ciudades más caras del mundo. Considerar alojarse en la frontera francesa (Annemasse) para ahorrar.</p>
-                    <ul class="list-disc list-inside space-y-2">
-                        <li><strong>Hotel 3★ funcional (4 noches, 2p):</strong> 800€ - 1.400€</li>
-                        <li><strong>Presupuesto total (2p):</strong> 1.550€ - 2.400€</li>
-                        <li class="font-bold text-lg">Presupuesto por persona: 775€ - 1.200€</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4">Itinerario Detallado</h3>
-                    <div class="space-y-4">
-                        <p><strong>Día 1:</strong> Llegada a Ginebra (GVA). Paseo por el <strong>lago Lemán</strong> para ver el <strong>Jet d'Eau</strong> y el Reloj de Flores.</p>
-                        <p><strong>Día 2:</strong> Excursión de día completo a <strong>Chamonix (Francia)</strong>. Ascenso en teleférico a la <strong>Aiguille du Midi (3,842m)</strong> para vistas inolvidables del Mont Blanc.</p>
-                        <p><strong>Día 3:</strong> Explorar el <strong>casco antiguo de Ginebra</strong> y el barrio internacional (sede de la ONU).</p>
-                        <p><strong>Día 4:</strong> Excursión en tren a <strong>Gruyères</strong> para visitar una fábrica de queso y la cercana chocolatería Maison Cailler.</p>
-                        <p><strong>Día 5:</strong> Últimas compras y regreso.</p>
+                    <div class="mb-8 bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Alojamiento y Presupuesto</h3>
+                        <p class="mb-4">Ginebra es una de las ciudades más caras del mundo. Considerar alojarse en la frontera francesa (Annemasse) para ahorrar.</p>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong>Hotel 3★ funcional (4 noches, 2p):</strong> 800€ - 1.400€</li>
+                            <li><strong>Presupuesto total (2p):</strong> 1.550€ - 2.400€</li>
+                            <li class="font-bold text-lg">Presupuesto por persona: 775€ - 1.200€</li>
+                        </ul>
                     </div>
-                </div>
-            </section>
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4">Itinerario Detallado</h3>
+                        <div class="space-y-4">
+                            <p><strong>Día 1:</strong> Llegada a Ginebra (GVA). Paseo por el <strong>lago Lemán</strong> para ver el <strong>Jet d'Eau</strong> y el Reloj de Flores.</p>
+                            <p><strong>Día 2:</strong> Excursión de día completo a <strong>Chamonix (Francia)</strong>. Ascenso en teleférico a la <strong>Aiguille du Midi (3,842m)</strong> para vistas inolvidables del Mont Blanc.</p>
+                            <p><strong>Día 3:</strong> Explorar el <strong>casco antiguo de Ginebra</strong> y el barrio internacional (sede de la ONU).</p>
+                            <p><strong>Día 4:</strong> Excursión en tren a <strong>Gruyères</strong> para visitar una fábrica de queso y la cercana chocolatería Maison Cailler.</p>
+                            <p><strong>Día 5:</strong> Últimas compras y regreso.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 
@@ -784,7 +810,7 @@
         function openTab(evt, tabName) {
             let i, tabcontent, tabbuttons;
             tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i = 0; i--) {
+            for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
             }
             tabbuttons = document.getElementsByClassName("tab-button");
@@ -809,8 +835,12 @@
             document.querySelector('.tab-button').click();
             // Cerrar modal si se hace clic fuera del contenido
             window.onclick = function(event) {
-                if (event.target.classList.contains('modal')) {
-                    closeModal(event.target.id);
+                if (event.target.classList.contains('modal-content-wrapper')) {
+                   const modals = document.getElementsByClassName('modal');
+                    for (let i = 0; i < modals.length; i++) {
+                        modals[i].style.display = 'none';
+                    }
+                   document.body.style.overflow = 'auto';
                 }
             }
         });
